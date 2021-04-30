@@ -15,13 +15,22 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         try {
-            $folders = '/images/';
-            $disk = 'public';
-            $image = $request->file('imag_profile');
-            $fullName = $request->input('first_name') . "-" . $request->input('last_name');
-            $email = $request->input('email');
-            $name = Str::slug($fullName);
-            $filePath = $folders . $name . '.' . $image->getClientOriginalExtension();
+
+
+            if ($request->hasFile('imag_profile')) {
+
+                $folder = '/images/';
+                $disk = 'public';
+                $file = $request->file('imag_profile');
+                $fullName = $request->input('first_name') . "-" . $request->input('last_name');
+
+                $name = Str::slug($fullName);
+                $filePath = $name . '.' . $file->getClientOriginalExtension();
+                $file->storeAs($folder, $name . '.' . $file->getClientOriginalExtension(), $disk);
+            } else {
+                $filePath = "";
+            }
+
 
             $validate = Validator::make($request->all(),
                 [
@@ -33,21 +42,21 @@ class AuthController extends Controller
             }
 
 
-            $image->storeAs($folders, $name . '.' . $image->getClientOriginalExtension(), $disk);
-
             $user = User::create([
                 "first_name" => $request->input('first_name'),
                 "last_name" => $request->input('last_name'),
                 "description" => $request->input('description'),
-                "email" => $email,
+                "email" => $request->input('email'),
                 "password" => bcrypt($request->input('password'))
             ]);
 
             $profile = User::find($user->id);
-            $asso = new Profile([
-                "imag_profile" => $filePath
-            ]);
-            $profile->profile()->save($asso);
+            if ($request->hasFile('imag_profile')) {
+                $asso = new Profile([
+                    "imag_profile" => $filePath
+                ]);
+                $profile->profile()->save($asso);
+            }
 
             $token = $user->createToken('prueba_amoba')->accessToken;
 
