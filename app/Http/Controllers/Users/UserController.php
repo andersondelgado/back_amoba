@@ -42,7 +42,6 @@ class UserController extends Controller
                 $date = Carbon::parse($request->query('date'));
                 $now = Carbon::now();
                 $user = User::with('profile')
-//                    ->whereRaw('LOWER(`first_name`) LIKE ?', "%" . $search . "%")
                     ->whereBetween('created_at', [$date, $now])
                     ->orderBy('id', 'desc')
                     ->paginate(5);
