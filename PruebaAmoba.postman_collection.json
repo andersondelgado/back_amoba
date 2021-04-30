@@ -1,0 +1,357 @@
+{
+	"info": {
+		"_postman_id": "a8f5ec48-3164-4575-838d-ff56f5f2c3bb",
+		"name": "PruebaAmoba",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "find",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-PERSONAL_ID",
+								"value": "{{CLIENT_ID}}",
+								"type": "text"
+							},
+							{
+								"key": "X-PERSONAL_SECRET",
+								"value": "{{CLIENT_SECRET}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/users?page=1&date=30-04-2021",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "l",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "date",
+									"value": "30-04-2021"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-PERSONAL_ID",
+								"value": "{{CLIENT_ID}}",
+								"type": "text"
+							},
+							{
+								"key": "X-PERSONAL_SECRET",
+								"value": "{{CLIENT_SECRET}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/users/16",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/users/15",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"15"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "pedros",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "perez",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "le gusta comer mucho",
+									"type": "text"
+								},
+								{
+									"key": "imag_profile",
+									"type": "file",
+									"src": "/C:/Users/Anderson/OneDrive/Imágenes/Feedback/{9D18F55D-CF6E-4077-930F-F2B42DF91F78}/Capture001.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/api/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "anderson",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "delgados",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "le gusta comer mucho",
+									"type": "text"
+								},
+								{
+									"key": "imag_profile",
+									"type": "file",
+									"src": "/C:/Users/Anderson/OneDrive/Imágenes/Feedback/{9D18F55D-CF6E-4077-930F-F2B42DF91F78}/Capture001.png"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "anderson_delgado443@hotmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/api/users/16",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usr",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5MzUwMWFmZC1jMDQ5LTQ5MzMtYWZlOS02ODA0Nzg2YjgzYjAiLCJqdGkiOiI4ODM0MzNjZGJmYTkzNzNlOWNlNTk2NWQ2M2MxNjliYjQyOTRhZDliODU1Y2U5YmUxMmVmNTE1MDI3ZmM1ZjFmMTM4NGE3ZWE5YjY2M2FiNCIsImlhdCI6MTYxOTczMDEzMSwibmJmIjoxNjE5NzMwMTMxLCJleHAiOjE2NTEyNjYxMzEsInN1YiI6IjE2Iiwic2NvcGVzIjpbXX0.vU6PTvBLTBilyJdtabOMfavF5VO0V3a4dPWYx2obzdn5NngY57XSSk4PM4jVLQDEuOCmilXwDiubtFqmU0Oe2AHC-ElZbMBpTwVTgaJqEqTnqh-PjO6-nXc6RYDFnXHgKJrfrReerD3qoxh0h4yvtmRF3V-U1sGnnefQr8jzzQ-sG-gF7YndIiHJ9A08TWnhjpUt7nCL8tc8co1Pb5vQJCflQRBnzw6cSNxKW1MKWPVXkWdjg8fMZz9ialDpmZKynlZDIvIaUTadLhqJBEx_C6eBvLLNKH7zCKNnXs9BOHhvx0Exa9NY59eWIcyZMOnBTf2WWoOA6QdigLghoPL_fl6CZxg9WSdnx9rFfgp3nHjTRb31tlj5wnveOpJajXO4TJbfumIkawbrfBLlnofQ2LECBCiU5rpmyvHgtkVd23gGjOdcI-78kA3ShhuA2NCfjj5GPgj5iPHtyEQ-2oai8Qltl87WPhYMvHOWBBoQS49E3xZRjRgSbxUwOPZ8rw4fgFrm5nixU1GklnqyRVIM0ecUdeYisFHZN3V4-DsfgMFz-2ZTsid1WM2uLvzFY-vY1Vf3VUxdFiBtlWHb9jQ0cznF19IO9DVq8Z33WnF-VdT3dmzLUsqOPj7QT-OytEWX5jg5n6PLpWcS4IC0iHYzXNObqkrwvDBCyiXNSuJjSy8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/user",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "pedros",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "perez",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "le gusta comer mucho",
+									"type": "text"
+								},
+								{
+									"key": "imag_profile",
+									"type": "file",
+									"src": "/C:/Users/Anderson/OneDrive/Imágenes/Feedback/{9D18F55D-CF6E-4077-930F-F2B42DF91F78}/Capture001.png"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "anderson_delgado443@hotmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/api/register",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "anderson_delgado443@hotmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/api/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://localhost:8001"
+		},
+		{
+			"key": "CLIENT_ID",
+			"value": "9351eb38-1033-4b8e-8f89-6dc4a50db76c\n"
+		},
+		{
+			"key": "CLIENT_SECRET",
+			"value": "SXfOVIHOyuf7sP5jnoMIUdfVIrnXYxPKL2bBP6Ez"
+		}
+	]
+}
